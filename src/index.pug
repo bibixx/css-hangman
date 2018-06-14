@@ -1,0 +1,58 @@
+- var keybarodRows = [
+- 'qwertyuiop', 'asdfghjkl', 'zxcvbnm'
+- ]
+- var wordsList = ['technology', 'javascript', 'value', 'industry', 'impression', 'resurrection', 'relativity', 'behaviour', 'chocolate']
+- var word;
+
+- var wordCount = 0
+html
+  head
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    link(rel="stylesheet" href="./index.css")
+
+  body
+    input(type="checkbox" id="randomise") 
+
+    .modal.random
+      h1 CSS-only Hangman
+      label.btn(for="randomise") Start
+
+    .games
+      while wordCount < wordsList.length
+        - word = wordsList[wordCount++]
+
+        .keyboard
+          each row in keybarodRows
+            each key in row.split('')
+              - if (word.indexOf(key) >= 0) {
+                input.keyboard__radio.keyboard__radio--in-word(type="radio" class=`key-${key}` id=`key-${key}-${word}` required)      
+              - } else {
+                input.keyboard__radio(type="radio" class=`key-${key}` id=`key-${key}-${word}`)
+              - }
+
+          .hangman
+            - var step = 1
+            while step <= 11
+              div(class=`hangman__step hangman__step--${step++}`)
+
+          .word
+            each letter in word.split('')
+              span.word__letter(class=`letter-${letter}`)=letter
+              span.word__spacer(class=`spacer-${letter}`) _
+
+          each row in keybarodRows
+            .keyboard__row
+              each key in row.split('')
+                label.keyboard__key(for=`key-${key}-${word}` class=`key-${key}`)
+                  | #{key}
+
+          .gameover.modal
+            main
+              h1 Oh! You have lost
+              h2 The word was ‘#{word}’
+              a.btn(href="?") Play again
+
+          .win.modal
+            main
+              h1 Congrats! You&nbsp;have&nbsp;won
+              a.btn(href="?") Play again

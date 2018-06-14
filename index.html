@@ -1,0 +1,790 @@
+<html>
+	<head>
+	    <meta name="viewport" content="width=device-width, initial-scale=1" />
+	    <link rel="stylesheet" href="./index.css" />
+	</head>
+
+	<body>
+		<input type="checkbox" id="randomise"/>
+		<div class="modal random">
+		  <h1>CSS-only Hangman</h1>
+		  <label class="btn" for="randomise">Start</label>
+		</div>
+		<div class="games">
+		  <div class="keyboard">
+		    <input class="keyboard__radio key-q" type="radio" id="key-q-technology"/>
+		    <input class="keyboard__radio key-w" type="radio" id="key-w-technology"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-e" type="radio" id="key-e-technology" required="required"/>
+		    <input class="keyboard__radio key-r" type="radio" id="key-r-technology"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-t" type="radio" id="key-t-technology" required="required"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-y" type="radio" id="key-y-technology" required="required"/>
+		    <input class="keyboard__radio key-u" type="radio" id="key-u-technology"/>
+		    <input class="keyboard__radio key-i" type="radio" id="key-i-technology"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-o" type="radio" id="key-o-technology" required="required"/>
+		    <input class="keyboard__radio key-p" type="radio" id="key-p-technology"/>
+		    <input class="keyboard__radio key-a" type="radio" id="key-a-technology"/>
+		    <input class="keyboard__radio key-s" type="radio" id="key-s-technology"/>
+		    <input class="keyboard__radio key-d" type="radio" id="key-d-technology"/>
+		    <input class="keyboard__radio key-f" type="radio" id="key-f-technology"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-g" type="radio" id="key-g-technology" required="required"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-h" type="radio" id="key-h-technology" required="required"/>
+		    <input class="keyboard__radio key-j" type="radio" id="key-j-technology"/>
+		    <input class="keyboard__radio key-k" type="radio" id="key-k-technology"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-l" type="radio" id="key-l-technology" required="required"/>
+		    <input class="keyboard__radio key-z" type="radio" id="key-z-technology"/>
+		    <input class="keyboard__radio key-x" type="radio" id="key-x-technology"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-c" type="radio" id="key-c-technology" required="required"/>
+		    <input class="keyboard__radio key-v" type="radio" id="key-v-technology"/>
+		    <input class="keyboard__radio key-b" type="radio" id="key-b-technology"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-n" type="radio" id="key-n-technology" required="required"/>
+		    <input class="keyboard__radio key-m" type="radio" id="key-m-technology"/>
+		    <div class="hangman">
+		      <div class="hangman__step hangman__step--1"></div>
+		      <div class="hangman__step hangman__step--2"></div>
+		      <div class="hangman__step hangman__step--3"></div>
+		      <div class="hangman__step hangman__step--4"></div>
+		      <div class="hangman__step hangman__step--5"></div>
+		      <div class="hangman__step hangman__step--6"></div>
+		      <div class="hangman__step hangman__step--7"></div>
+		      <div class="hangman__step hangman__step--8"></div>
+		      <div class="hangman__step hangman__step--9"></div>
+		      <div class="hangman__step hangman__step--10"></div>
+		      <div class="hangman__step hangman__step--11"></div>
+		    </div>
+		    <div class="word"><span class="word__letter letter-t">t</span><span class="word__spacer spacer-t">_</span><span class="word__letter letter-e">e</span><span class="word__spacer spacer-e">_</span><span class="word__letter letter-c">c</span><span class="word__spacer spacer-c">_</span><span class="word__letter letter-h">h</span><span class="word__spacer spacer-h">_</span><span class="word__letter letter-n">n</span><span class="word__spacer spacer-n">_</span><span class="word__letter letter-o">o</span><span class="word__spacer spacer-o">_</span><span class="word__letter letter-l">l</span><span class="word__spacer spacer-l">_</span><span class="word__letter letter-o">o</span><span class="word__spacer spacer-o">_</span><span class="word__letter letter-g">g</span><span class="word__spacer spacer-g">_</span><span class="word__letter letter-y">y</span><span class="word__spacer spacer-y">_</span>
+		    </div>
+		    <div class="keyboard__row">
+		      <label class="keyboard__key key-q" for="key-q-technology">q</label>
+		      <label class="keyboard__key key-w" for="key-w-technology">w</label>
+		      <label class="keyboard__key key-e" for="key-e-technology">e</label>
+		      <label class="keyboard__key key-r" for="key-r-technology">r</label>
+		      <label class="keyboard__key key-t" for="key-t-technology">t</label>
+		      <label class="keyboard__key key-y" for="key-y-technology">y</label>
+		      <label class="keyboard__key key-u" for="key-u-technology">u</label>
+		      <label class="keyboard__key key-i" for="key-i-technology">i</label>
+		      <label class="keyboard__key key-o" for="key-o-technology">o</label>
+		      <label class="keyboard__key key-p" for="key-p-technology">p</label>
+		    </div>
+		    <div class="keyboard__row">
+		      <label class="keyboard__key key-a" for="key-a-technology">a</label>
+		      <label class="keyboard__key key-s" for="key-s-technology">s</label>
+		      <label class="keyboard__key key-d" for="key-d-technology">d</label>
+		      <label class="keyboard__key key-f" for="key-f-technology">f</label>
+		      <label class="keyboard__key key-g" for="key-g-technology">g</label>
+		      <label class="keyboard__key key-h" for="key-h-technology">h</label>
+		      <label class="keyboard__key key-j" for="key-j-technology">j</label>
+		      <label class="keyboard__key key-k" for="key-k-technology">k</label>
+		      <label class="keyboard__key key-l" for="key-l-technology">l</label>
+		    </div>
+		    <div class="keyboard__row">
+		      <label class="keyboard__key key-z" for="key-z-technology">z</label>
+		      <label class="keyboard__key key-x" for="key-x-technology">x</label>
+		      <label class="keyboard__key key-c" for="key-c-technology">c</label>
+		      <label class="keyboard__key key-v" for="key-v-technology">v</label>
+		      <label class="keyboard__key key-b" for="key-b-technology">b</label>
+		      <label class="keyboard__key key-n" for="key-n-technology">n</label>
+		      <label class="keyboard__key key-m" for="key-m-technology">m</label>
+		    </div>
+		    <div class="gameover modal">
+		      <main>
+		        <h1>Oh! You have lost</h1>
+		        <h2>The word was ‘technology’</h2><a class="btn" href="?">Play again</a>
+		      </main>
+		    </div>
+		    <div class="win modal">
+		      <main>
+		        <h1>Congrats! You&nbsp;have&nbsp;won</h1><a class="btn" href="?">Play again</a>
+		      </main>
+		    </div>
+		  </div>
+		  <div class="keyboard">
+		    <input class="keyboard__radio key-q" type="radio" id="key-q-javascript"/>
+		    <input class="keyboard__radio key-w" type="radio" id="key-w-javascript"/>
+		    <input class="keyboard__radio key-e" type="radio" id="key-e-javascript"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-r" type="radio" id="key-r-javascript" required="required"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-t" type="radio" id="key-t-javascript" required="required"/>
+		    <input class="keyboard__radio key-y" type="radio" id="key-y-javascript"/>
+		    <input class="keyboard__radio key-u" type="radio" id="key-u-javascript"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-i" type="radio" id="key-i-javascript" required="required"/>
+		    <input class="keyboard__radio key-o" type="radio" id="key-o-javascript"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-p" type="radio" id="key-p-javascript" required="required"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-a" type="radio" id="key-a-javascript" required="required"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-s" type="radio" id="key-s-javascript" required="required"/>
+		    <input class="keyboard__radio key-d" type="radio" id="key-d-javascript"/>
+		    <input class="keyboard__radio key-f" type="radio" id="key-f-javascript"/>
+		    <input class="keyboard__radio key-g" type="radio" id="key-g-javascript"/>
+		    <input class="keyboard__radio key-h" type="radio" id="key-h-javascript"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-j" type="radio" id="key-j-javascript" required="required"/>
+		    <input class="keyboard__radio key-k" type="radio" id="key-k-javascript"/>
+		    <input class="keyboard__radio key-l" type="radio" id="key-l-javascript"/>
+		    <input class="keyboard__radio key-z" type="radio" id="key-z-javascript"/>
+		    <input class="keyboard__radio key-x" type="radio" id="key-x-javascript"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-c" type="radio" id="key-c-javascript" required="required"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-v" type="radio" id="key-v-javascript" required="required"/>
+		    <input class="keyboard__radio key-b" type="radio" id="key-b-javascript"/>
+		    <input class="keyboard__radio key-n" type="radio" id="key-n-javascript"/>
+		    <input class="keyboard__radio key-m" type="radio" id="key-m-javascript"/>
+		    <div class="hangman">
+		      <div class="hangman__step hangman__step--1"></div>
+		      <div class="hangman__step hangman__step--2"></div>
+		      <div class="hangman__step hangman__step--3"></div>
+		      <div class="hangman__step hangman__step--4"></div>
+		      <div class="hangman__step hangman__step--5"></div>
+		      <div class="hangman__step hangman__step--6"></div>
+		      <div class="hangman__step hangman__step--7"></div>
+		      <div class="hangman__step hangman__step--8"></div>
+		      <div class="hangman__step hangman__step--9"></div>
+		      <div class="hangman__step hangman__step--10"></div>
+		      <div class="hangman__step hangman__step--11"></div>
+		    </div>
+		    <div class="word"><span class="word__letter letter-j">j</span><span class="word__spacer spacer-j">_</span><span class="word__letter letter-a">a</span><span class="word__spacer spacer-a">_</span><span class="word__letter letter-v">v</span><span class="word__spacer spacer-v">_</span><span class="word__letter letter-a">a</span><span class="word__spacer spacer-a">_</span><span class="word__letter letter-s">s</span><span class="word__spacer spacer-s">_</span><span class="word__letter letter-c">c</span><span class="word__spacer spacer-c">_</span><span class="word__letter letter-r">r</span><span class="word__spacer spacer-r">_</span><span class="word__letter letter-i">i</span><span class="word__spacer spacer-i">_</span><span class="word__letter letter-p">p</span><span class="word__spacer spacer-p">_</span><span class="word__letter letter-t">t</span><span class="word__spacer spacer-t">_</span>
+		    </div>
+		    <div class="keyboard__row">
+		      <label class="keyboard__key key-q" for="key-q-javascript">q</label>
+		      <label class="keyboard__key key-w" for="key-w-javascript">w</label>
+		      <label class="keyboard__key key-e" for="key-e-javascript">e</label>
+		      <label class="keyboard__key key-r" for="key-r-javascript">r</label>
+		      <label class="keyboard__key key-t" for="key-t-javascript">t</label>
+		      <label class="keyboard__key key-y" for="key-y-javascript">y</label>
+		      <label class="keyboard__key key-u" for="key-u-javascript">u</label>
+		      <label class="keyboard__key key-i" for="key-i-javascript">i</label>
+		      <label class="keyboard__key key-o" for="key-o-javascript">o</label>
+		      <label class="keyboard__key key-p" for="key-p-javascript">p</label>
+		    </div>
+		    <div class="keyboard__row">
+		      <label class="keyboard__key key-a" for="key-a-javascript">a</label>
+		      <label class="keyboard__key key-s" for="key-s-javascript">s</label>
+		      <label class="keyboard__key key-d" for="key-d-javascript">d</label>
+		      <label class="keyboard__key key-f" for="key-f-javascript">f</label>
+		      <label class="keyboard__key key-g" for="key-g-javascript">g</label>
+		      <label class="keyboard__key key-h" for="key-h-javascript">h</label>
+		      <label class="keyboard__key key-j" for="key-j-javascript">j</label>
+		      <label class="keyboard__key key-k" for="key-k-javascript">k</label>
+		      <label class="keyboard__key key-l" for="key-l-javascript">l</label>
+		    </div>
+		    <div class="keyboard__row">
+		      <label class="keyboard__key key-z" for="key-z-javascript">z</label>
+		      <label class="keyboard__key key-x" for="key-x-javascript">x</label>
+		      <label class="keyboard__key key-c" for="key-c-javascript">c</label>
+		      <label class="keyboard__key key-v" for="key-v-javascript">v</label>
+		      <label class="keyboard__key key-b" for="key-b-javascript">b</label>
+		      <label class="keyboard__key key-n" for="key-n-javascript">n</label>
+		      <label class="keyboard__key key-m" for="key-m-javascript">m</label>
+		    </div>
+		    <div class="gameover modal">
+		      <main>
+		        <h1>Oh! You have lost</h1>
+		        <h2>The word was ‘javascript’</h2><a class="btn" href="?">Play again</a>
+		      </main>
+		    </div>
+		    <div class="win modal">
+		      <main>
+		        <h1>Congrats! You&nbsp;have&nbsp;won</h1><a class="btn" href="?">Play again</a>
+		      </main>
+		    </div>
+		  </div>
+		  <div class="keyboard">
+		    <input class="keyboard__radio key-q" type="radio" id="key-q-value"/>
+		    <input class="keyboard__radio key-w" type="radio" id="key-w-value"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-e" type="radio" id="key-e-value" required="required"/>
+		    <input class="keyboard__radio key-r" type="radio" id="key-r-value"/>
+		    <input class="keyboard__radio key-t" type="radio" id="key-t-value"/>
+		    <input class="keyboard__radio key-y" type="radio" id="key-y-value"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-u" type="radio" id="key-u-value" required="required"/>
+		    <input class="keyboard__radio key-i" type="radio" id="key-i-value"/>
+		    <input class="keyboard__radio key-o" type="radio" id="key-o-value"/>
+		    <input class="keyboard__radio key-p" type="radio" id="key-p-value"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-a" type="radio" id="key-a-value" required="required"/>
+		    <input class="keyboard__radio key-s" type="radio" id="key-s-value"/>
+		    <input class="keyboard__radio key-d" type="radio" id="key-d-value"/>
+		    <input class="keyboard__radio key-f" type="radio" id="key-f-value"/>
+		    <input class="keyboard__radio key-g" type="radio" id="key-g-value"/>
+		    <input class="keyboard__radio key-h" type="radio" id="key-h-value"/>
+		    <input class="keyboard__radio key-j" type="radio" id="key-j-value"/>
+		    <input class="keyboard__radio key-k" type="radio" id="key-k-value"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-l" type="radio" id="key-l-value" required="required"/>
+		    <input class="keyboard__radio key-z" type="radio" id="key-z-value"/>
+		    <input class="keyboard__radio key-x" type="radio" id="key-x-value"/>
+		    <input class="keyboard__radio key-c" type="radio" id="key-c-value"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-v" type="radio" id="key-v-value" required="required"/>
+		    <input class="keyboard__radio key-b" type="radio" id="key-b-value"/>
+		    <input class="keyboard__radio key-n" type="radio" id="key-n-value"/>
+		    <input class="keyboard__radio key-m" type="radio" id="key-m-value"/>
+		    <div class="hangman">
+		      <div class="hangman__step hangman__step--1"></div>
+		      <div class="hangman__step hangman__step--2"></div>
+		      <div class="hangman__step hangman__step--3"></div>
+		      <div class="hangman__step hangman__step--4"></div>
+		      <div class="hangman__step hangman__step--5"></div>
+		      <div class="hangman__step hangman__step--6"></div>
+		      <div class="hangman__step hangman__step--7"></div>
+		      <div class="hangman__step hangman__step--8"></div>
+		      <div class="hangman__step hangman__step--9"></div>
+		      <div class="hangman__step hangman__step--10"></div>
+		      <div class="hangman__step hangman__step--11"></div>
+		    </div>
+		    <div class="word"><span class="word__letter letter-v">v</span><span class="word__spacer spacer-v">_</span><span class="word__letter letter-a">a</span><span class="word__spacer spacer-a">_</span><span class="word__letter letter-l">l</span><span class="word__spacer spacer-l">_</span><span class="word__letter letter-u">u</span><span class="word__spacer spacer-u">_</span><span class="word__letter letter-e">e</span><span class="word__spacer spacer-e">_</span>
+		    </div>
+		    <div class="keyboard__row">
+		      <label class="keyboard__key key-q" for="key-q-value">q</label>
+		      <label class="keyboard__key key-w" for="key-w-value">w</label>
+		      <label class="keyboard__key key-e" for="key-e-value">e</label>
+		      <label class="keyboard__key key-r" for="key-r-value">r</label>
+		      <label class="keyboard__key key-t" for="key-t-value">t</label>
+		      <label class="keyboard__key key-y" for="key-y-value">y</label>
+		      <label class="keyboard__key key-u" for="key-u-value">u</label>
+		      <label class="keyboard__key key-i" for="key-i-value">i</label>
+		      <label class="keyboard__key key-o" for="key-o-value">o</label>
+		      <label class="keyboard__key key-p" for="key-p-value">p</label>
+		    </div>
+		    <div class="keyboard__row">
+		      <label class="keyboard__key key-a" for="key-a-value">a</label>
+		      <label class="keyboard__key key-s" for="key-s-value">s</label>
+		      <label class="keyboard__key key-d" for="key-d-value">d</label>
+		      <label class="keyboard__key key-f" for="key-f-value">f</label>
+		      <label class="keyboard__key key-g" for="key-g-value">g</label>
+		      <label class="keyboard__key key-h" for="key-h-value">h</label>
+		      <label class="keyboard__key key-j" for="key-j-value">j</label>
+		      <label class="keyboard__key key-k" for="key-k-value">k</label>
+		      <label class="keyboard__key key-l" for="key-l-value">l</label>
+		    </div>
+		    <div class="keyboard__row">
+		      <label class="keyboard__key key-z" for="key-z-value">z</label>
+		      <label class="keyboard__key key-x" for="key-x-value">x</label>
+		      <label class="keyboard__key key-c" for="key-c-value">c</label>
+		      <label class="keyboard__key key-v" for="key-v-value">v</label>
+		      <label class="keyboard__key key-b" for="key-b-value">b</label>
+		      <label class="keyboard__key key-n" for="key-n-value">n</label>
+		      <label class="keyboard__key key-m" for="key-m-value">m</label>
+		    </div>
+		    <div class="gameover modal">
+		      <main>
+		        <h1>Oh! You have lost</h1>
+		        <h2>The word was ‘value’</h2><a class="btn" href="?">Play again</a>
+		      </main>
+		    </div>
+		    <div class="win modal">
+		      <main>
+		        <h1>Congrats! You&nbsp;have&nbsp;won</h1><a class="btn" href="?">Play again</a>
+		      </main>
+		    </div>
+		  </div>
+		  <div class="keyboard">
+		    <input class="keyboard__radio key-q" type="radio" id="key-q-industry"/>
+		    <input class="keyboard__radio key-w" type="radio" id="key-w-industry"/>
+		    <input class="keyboard__radio key-e" type="radio" id="key-e-industry"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-r" type="radio" id="key-r-industry" required="required"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-t" type="radio" id="key-t-industry" required="required"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-y" type="radio" id="key-y-industry" required="required"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-u" type="radio" id="key-u-industry" required="required"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-i" type="radio" id="key-i-industry" required="required"/>
+		    <input class="keyboard__radio key-o" type="radio" id="key-o-industry"/>
+		    <input class="keyboard__radio key-p" type="radio" id="key-p-industry"/>
+		    <input class="keyboard__radio key-a" type="radio" id="key-a-industry"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-s" type="radio" id="key-s-industry" required="required"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-d" type="radio" id="key-d-industry" required="required"/>
+		    <input class="keyboard__radio key-f" type="radio" id="key-f-industry"/>
+		    <input class="keyboard__radio key-g" type="radio" id="key-g-industry"/>
+		    <input class="keyboard__radio key-h" type="radio" id="key-h-industry"/>
+		    <input class="keyboard__radio key-j" type="radio" id="key-j-industry"/>
+		    <input class="keyboard__radio key-k" type="radio" id="key-k-industry"/>
+		    <input class="keyboard__radio key-l" type="radio" id="key-l-industry"/>
+		    <input class="keyboard__radio key-z" type="radio" id="key-z-industry"/>
+		    <input class="keyboard__radio key-x" type="radio" id="key-x-industry"/>
+		    <input class="keyboard__radio key-c" type="radio" id="key-c-industry"/>
+		    <input class="keyboard__radio key-v" type="radio" id="key-v-industry"/>
+		    <input class="keyboard__radio key-b" type="radio" id="key-b-industry"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-n" type="radio" id="key-n-industry" required="required"/>
+		    <input class="keyboard__radio key-m" type="radio" id="key-m-industry"/>
+		    <div class="hangman">
+		      <div class="hangman__step hangman__step--1"></div>
+		      <div class="hangman__step hangman__step--2"></div>
+		      <div class="hangman__step hangman__step--3"></div>
+		      <div class="hangman__step hangman__step--4"></div>
+		      <div class="hangman__step hangman__step--5"></div>
+		      <div class="hangman__step hangman__step--6"></div>
+		      <div class="hangman__step hangman__step--7"></div>
+		      <div class="hangman__step hangman__step--8"></div>
+		      <div class="hangman__step hangman__step--9"></div>
+		      <div class="hangman__step hangman__step--10"></div>
+		      <div class="hangman__step hangman__step--11"></div>
+		    </div>
+		    <div class="word"><span class="word__letter letter-i">i</span><span class="word__spacer spacer-i">_</span><span class="word__letter letter-n">n</span><span class="word__spacer spacer-n">_</span><span class="word__letter letter-d">d</span><span class="word__spacer spacer-d">_</span><span class="word__letter letter-u">u</span><span class="word__spacer spacer-u">_</span><span class="word__letter letter-s">s</span><span class="word__spacer spacer-s">_</span><span class="word__letter letter-t">t</span><span class="word__spacer spacer-t">_</span><span class="word__letter letter-r">r</span><span class="word__spacer spacer-r">_</span><span class="word__letter letter-y">y</span><span class="word__spacer spacer-y">_</span>
+		    </div>
+		    <div class="keyboard__row">
+		      <label class="keyboard__key key-q" for="key-q-industry">q</label>
+		      <label class="keyboard__key key-w" for="key-w-industry">w</label>
+		      <label class="keyboard__key key-e" for="key-e-industry">e</label>
+		      <label class="keyboard__key key-r" for="key-r-industry">r</label>
+		      <label class="keyboard__key key-t" for="key-t-industry">t</label>
+		      <label class="keyboard__key key-y" for="key-y-industry">y</label>
+		      <label class="keyboard__key key-u" for="key-u-industry">u</label>
+		      <label class="keyboard__key key-i" for="key-i-industry">i</label>
+		      <label class="keyboard__key key-o" for="key-o-industry">o</label>
+		      <label class="keyboard__key key-p" for="key-p-industry">p</label>
+		    </div>
+		    <div class="keyboard__row">
+		      <label class="keyboard__key key-a" for="key-a-industry">a</label>
+		      <label class="keyboard__key key-s" for="key-s-industry">s</label>
+		      <label class="keyboard__key key-d" for="key-d-industry">d</label>
+		      <label class="keyboard__key key-f" for="key-f-industry">f</label>
+		      <label class="keyboard__key key-g" for="key-g-industry">g</label>
+		      <label class="keyboard__key key-h" for="key-h-industry">h</label>
+		      <label class="keyboard__key key-j" for="key-j-industry">j</label>
+		      <label class="keyboard__key key-k" for="key-k-industry">k</label>
+		      <label class="keyboard__key key-l" for="key-l-industry">l</label>
+		    </div>
+		    <div class="keyboard__row">
+		      <label class="keyboard__key key-z" for="key-z-industry">z</label>
+		      <label class="keyboard__key key-x" for="key-x-industry">x</label>
+		      <label class="keyboard__key key-c" for="key-c-industry">c</label>
+		      <label class="keyboard__key key-v" for="key-v-industry">v</label>
+		      <label class="keyboard__key key-b" for="key-b-industry">b</label>
+		      <label class="keyboard__key key-n" for="key-n-industry">n</label>
+		      <label class="keyboard__key key-m" for="key-m-industry">m</label>
+		    </div>
+		    <div class="gameover modal">
+		      <main>
+		        <h1>Oh! You have lost</h1>
+		        <h2>The word was ‘industry’</h2><a class="btn" href="?">Play again</a>
+		      </main>
+		    </div>
+		    <div class="win modal">
+		      <main>
+		        <h1>Congrats! You&nbsp;have&nbsp;won</h1><a class="btn" href="?">Play again</a>
+		      </main>
+		    </div>
+		  </div>
+		  <div class="keyboard">
+		    <input class="keyboard__radio key-q" type="radio" id="key-q-impression"/>
+		    <input class="keyboard__radio key-w" type="radio" id="key-w-impression"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-e" type="radio" id="key-e-impression" required="required"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-r" type="radio" id="key-r-impression" required="required"/>
+		    <input class="keyboard__radio key-t" type="radio" id="key-t-impression"/>
+		    <input class="keyboard__radio key-y" type="radio" id="key-y-impression"/>
+		    <input class="keyboard__radio key-u" type="radio" id="key-u-impression"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-i" type="radio" id="key-i-impression" required="required"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-o" type="radio" id="key-o-impression" required="required"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-p" type="radio" id="key-p-impression" required="required"/>
+		    <input class="keyboard__radio key-a" type="radio" id="key-a-impression"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-s" type="radio" id="key-s-impression" required="required"/>
+		    <input class="keyboard__radio key-d" type="radio" id="key-d-impression"/>
+		    <input class="keyboard__radio key-f" type="radio" id="key-f-impression"/>
+		    <input class="keyboard__radio key-g" type="radio" id="key-g-impression"/>
+		    <input class="keyboard__radio key-h" type="radio" id="key-h-impression"/>
+		    <input class="keyboard__radio key-j" type="radio" id="key-j-impression"/>
+		    <input class="keyboard__radio key-k" type="radio" id="key-k-impression"/>
+		    <input class="keyboard__radio key-l" type="radio" id="key-l-impression"/>
+		    <input class="keyboard__radio key-z" type="radio" id="key-z-impression"/>
+		    <input class="keyboard__radio key-x" type="radio" id="key-x-impression"/>
+		    <input class="keyboard__radio key-c" type="radio" id="key-c-impression"/>
+		    <input class="keyboard__radio key-v" type="radio" id="key-v-impression"/>
+		    <input class="keyboard__radio key-b" type="radio" id="key-b-impression"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-n" type="radio" id="key-n-impression" required="required"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-m" type="radio" id="key-m-impression" required="required"/>
+		    <div class="hangman">
+		      <div class="hangman__step hangman__step--1"></div>
+		      <div class="hangman__step hangman__step--2"></div>
+		      <div class="hangman__step hangman__step--3"></div>
+		      <div class="hangman__step hangman__step--4"></div>
+		      <div class="hangman__step hangman__step--5"></div>
+		      <div class="hangman__step hangman__step--6"></div>
+		      <div class="hangman__step hangman__step--7"></div>
+		      <div class="hangman__step hangman__step--8"></div>
+		      <div class="hangman__step hangman__step--9"></div>
+		      <div class="hangman__step hangman__step--10"></div>
+		      <div class="hangman__step hangman__step--11"></div>
+		    </div>
+		    <div class="word"><span class="word__letter letter-i">i</span><span class="word__spacer spacer-i">_</span><span class="word__letter letter-m">m</span><span class="word__spacer spacer-m">_</span><span class="word__letter letter-p">p</span><span class="word__spacer spacer-p">_</span><span class="word__letter letter-r">r</span><span class="word__spacer spacer-r">_</span><span class="word__letter letter-e">e</span><span class="word__spacer spacer-e">_</span><span class="word__letter letter-s">s</span><span class="word__spacer spacer-s">_</span><span class="word__letter letter-s">s</span><span class="word__spacer spacer-s">_</span><span class="word__letter letter-i">i</span><span class="word__spacer spacer-i">_</span><span class="word__letter letter-o">o</span><span class="word__spacer spacer-o">_</span><span class="word__letter letter-n">n</span><span class="word__spacer spacer-n">_</span>
+		    </div>
+		    <div class="keyboard__row">
+		      <label class="keyboard__key key-q" for="key-q-impression">q</label>
+		      <label class="keyboard__key key-w" for="key-w-impression">w</label>
+		      <label class="keyboard__key key-e" for="key-e-impression">e</label>
+		      <label class="keyboard__key key-r" for="key-r-impression">r</label>
+		      <label class="keyboard__key key-t" for="key-t-impression">t</label>
+		      <label class="keyboard__key key-y" for="key-y-impression">y</label>
+		      <label class="keyboard__key key-u" for="key-u-impression">u</label>
+		      <label class="keyboard__key key-i" for="key-i-impression">i</label>
+		      <label class="keyboard__key key-o" for="key-o-impression">o</label>
+		      <label class="keyboard__key key-p" for="key-p-impression">p</label>
+		    </div>
+		    <div class="keyboard__row">
+		      <label class="keyboard__key key-a" for="key-a-impression">a</label>
+		      <label class="keyboard__key key-s" for="key-s-impression">s</label>
+		      <label class="keyboard__key key-d" for="key-d-impression">d</label>
+		      <label class="keyboard__key key-f" for="key-f-impression">f</label>
+		      <label class="keyboard__key key-g" for="key-g-impression">g</label>
+		      <label class="keyboard__key key-h" for="key-h-impression">h</label>
+		      <label class="keyboard__key key-j" for="key-j-impression">j</label>
+		      <label class="keyboard__key key-k" for="key-k-impression">k</label>
+		      <label class="keyboard__key key-l" for="key-l-impression">l</label>
+		    </div>
+		    <div class="keyboard__row">
+		      <label class="keyboard__key key-z" for="key-z-impression">z</label>
+		      <label class="keyboard__key key-x" for="key-x-impression">x</label>
+		      <label class="keyboard__key key-c" for="key-c-impression">c</label>
+		      <label class="keyboard__key key-v" for="key-v-impression">v</label>
+		      <label class="keyboard__key key-b" for="key-b-impression">b</label>
+		      <label class="keyboard__key key-n" for="key-n-impression">n</label>
+		      <label class="keyboard__key key-m" for="key-m-impression">m</label>
+		    </div>
+		    <div class="gameover modal">
+		      <main>
+		        <h1>Oh! You have lost</h1>
+		        <h2>The word was ‘impression’</h2><a class="btn" href="?">Play again</a>
+		      </main>
+		    </div>
+		    <div class="win modal">
+		      <main>
+		        <h1>Congrats! You&nbsp;have&nbsp;won</h1><a class="btn" href="?">Play again</a>
+		      </main>
+		    </div>
+		  </div>
+		  <div class="keyboard">
+		    <input class="keyboard__radio key-q" type="radio" id="key-q-resurrection"/>
+		    <input class="keyboard__radio key-w" type="radio" id="key-w-resurrection"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-e" type="radio" id="key-e-resurrection" required="required"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-r" type="radio" id="key-r-resurrection" required="required"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-t" type="radio" id="key-t-resurrection" required="required"/>
+		    <input class="keyboard__radio key-y" type="radio" id="key-y-resurrection"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-u" type="radio" id="key-u-resurrection" required="required"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-i" type="radio" id="key-i-resurrection" required="required"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-o" type="radio" id="key-o-resurrection" required="required"/>
+		    <input class="keyboard__radio key-p" type="radio" id="key-p-resurrection"/>
+		    <input class="keyboard__radio key-a" type="radio" id="key-a-resurrection"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-s" type="radio" id="key-s-resurrection" required="required"/>
+		    <input class="keyboard__radio key-d" type="radio" id="key-d-resurrection"/>
+		    <input class="keyboard__radio key-f" type="radio" id="key-f-resurrection"/>
+		    <input class="keyboard__radio key-g" type="radio" id="key-g-resurrection"/>
+		    <input class="keyboard__radio key-h" type="radio" id="key-h-resurrection"/>
+		    <input class="keyboard__radio key-j" type="radio" id="key-j-resurrection"/>
+		    <input class="keyboard__radio key-k" type="radio" id="key-k-resurrection"/>
+		    <input class="keyboard__radio key-l" type="radio" id="key-l-resurrection"/>
+		    <input class="keyboard__radio key-z" type="radio" id="key-z-resurrection"/>
+		    <input class="keyboard__radio key-x" type="radio" id="key-x-resurrection"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-c" type="radio" id="key-c-resurrection" required="required"/>
+		    <input class="keyboard__radio key-v" type="radio" id="key-v-resurrection"/>
+		    <input class="keyboard__radio key-b" type="radio" id="key-b-resurrection"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-n" type="radio" id="key-n-resurrection" required="required"/>
+		    <input class="keyboard__radio key-m" type="radio" id="key-m-resurrection"/>
+		    <div class="hangman">
+		      <div class="hangman__step hangman__step--1"></div>
+		      <div class="hangman__step hangman__step--2"></div>
+		      <div class="hangman__step hangman__step--3"></div>
+		      <div class="hangman__step hangman__step--4"></div>
+		      <div class="hangman__step hangman__step--5"></div>
+		      <div class="hangman__step hangman__step--6"></div>
+		      <div class="hangman__step hangman__step--7"></div>
+		      <div class="hangman__step hangman__step--8"></div>
+		      <div class="hangman__step hangman__step--9"></div>
+		      <div class="hangman__step hangman__step--10"></div>
+		      <div class="hangman__step hangman__step--11"></div>
+		    </div>
+		    <div class="word"><span class="word__letter letter-r">r</span><span class="word__spacer spacer-r">_</span><span class="word__letter letter-e">e</span><span class="word__spacer spacer-e">_</span><span class="word__letter letter-s">s</span><span class="word__spacer spacer-s">_</span><span class="word__letter letter-u">u</span><span class="word__spacer spacer-u">_</span><span class="word__letter letter-r">r</span><span class="word__spacer spacer-r">_</span><span class="word__letter letter-r">r</span><span class="word__spacer spacer-r">_</span><span class="word__letter letter-e">e</span><span class="word__spacer spacer-e">_</span><span class="word__letter letter-c">c</span><span class="word__spacer spacer-c">_</span><span class="word__letter letter-t">t</span><span class="word__spacer spacer-t">_</span><span class="word__letter letter-i">i</span><span class="word__spacer spacer-i">_</span><span class="word__letter letter-o">o</span><span class="word__spacer spacer-o">_</span><span class="word__letter letter-n">n</span><span class="word__spacer spacer-n">_</span>
+		    </div>
+		    <div class="keyboard__row">
+		      <label class="keyboard__key key-q" for="key-q-resurrection">q</label>
+		      <label class="keyboard__key key-w" for="key-w-resurrection">w</label>
+		      <label class="keyboard__key key-e" for="key-e-resurrection">e</label>
+		      <label class="keyboard__key key-r" for="key-r-resurrection">r</label>
+		      <label class="keyboard__key key-t" for="key-t-resurrection">t</label>
+		      <label class="keyboard__key key-y" for="key-y-resurrection">y</label>
+		      <label class="keyboard__key key-u" for="key-u-resurrection">u</label>
+		      <label class="keyboard__key key-i" for="key-i-resurrection">i</label>
+		      <label class="keyboard__key key-o" for="key-o-resurrection">o</label>
+		      <label class="keyboard__key key-p" for="key-p-resurrection">p</label>
+		    </div>
+		    <div class="keyboard__row">
+		      <label class="keyboard__key key-a" for="key-a-resurrection">a</label>
+		      <label class="keyboard__key key-s" for="key-s-resurrection">s</label>
+		      <label class="keyboard__key key-d" for="key-d-resurrection">d</label>
+		      <label class="keyboard__key key-f" for="key-f-resurrection">f</label>
+		      <label class="keyboard__key key-g" for="key-g-resurrection">g</label>
+		      <label class="keyboard__key key-h" for="key-h-resurrection">h</label>
+		      <label class="keyboard__key key-j" for="key-j-resurrection">j</label>
+		      <label class="keyboard__key key-k" for="key-k-resurrection">k</label>
+		      <label class="keyboard__key key-l" for="key-l-resurrection">l</label>
+		    </div>
+		    <div class="keyboard__row">
+		      <label class="keyboard__key key-z" for="key-z-resurrection">z</label>
+		      <label class="keyboard__key key-x" for="key-x-resurrection">x</label>
+		      <label class="keyboard__key key-c" for="key-c-resurrection">c</label>
+		      <label class="keyboard__key key-v" for="key-v-resurrection">v</label>
+		      <label class="keyboard__key key-b" for="key-b-resurrection">b</label>
+		      <label class="keyboard__key key-n" for="key-n-resurrection">n</label>
+		      <label class="keyboard__key key-m" for="key-m-resurrection">m</label>
+		    </div>
+		    <div class="gameover modal">
+		      <main>
+		        <h1>Oh! You have lost</h1>
+		        <h2>The word was ‘resurrection’</h2><a class="btn" href="?">Play again</a>
+		      </main>
+		    </div>
+		    <div class="win modal">
+		      <main>
+		        <h1>Congrats! You&nbsp;have&nbsp;won</h1><a class="btn" href="?">Play again</a>
+		      </main>
+		    </div>
+		  </div>
+		  <div class="keyboard">
+		    <input class="keyboard__radio key-q" type="radio" id="key-q-relativity"/>
+		    <input class="keyboard__radio key-w" type="radio" id="key-w-relativity"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-e" type="radio" id="key-e-relativity" required="required"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-r" type="radio" id="key-r-relativity" required="required"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-t" type="radio" id="key-t-relativity" required="required"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-y" type="radio" id="key-y-relativity" required="required"/>
+		    <input class="keyboard__radio key-u" type="radio" id="key-u-relativity"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-i" type="radio" id="key-i-relativity" required="required"/>
+		    <input class="keyboard__radio key-o" type="radio" id="key-o-relativity"/>
+		    <input class="keyboard__radio key-p" type="radio" id="key-p-relativity"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-a" type="radio" id="key-a-relativity" required="required"/>
+		    <input class="keyboard__radio key-s" type="radio" id="key-s-relativity"/>
+		    <input class="keyboard__radio key-d" type="radio" id="key-d-relativity"/>
+		    <input class="keyboard__radio key-f" type="radio" id="key-f-relativity"/>
+		    <input class="keyboard__radio key-g" type="radio" id="key-g-relativity"/>
+		    <input class="keyboard__radio key-h" type="radio" id="key-h-relativity"/>
+		    <input class="keyboard__radio key-j" type="radio" id="key-j-relativity"/>
+		    <input class="keyboard__radio key-k" type="radio" id="key-k-relativity"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-l" type="radio" id="key-l-relativity" required="required"/>
+		    <input class="keyboard__radio key-z" type="radio" id="key-z-relativity"/>
+		    <input class="keyboard__radio key-x" type="radio" id="key-x-relativity"/>
+		    <input class="keyboard__radio key-c" type="radio" id="key-c-relativity"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-v" type="radio" id="key-v-relativity" required="required"/>
+		    <input class="keyboard__radio key-b" type="radio" id="key-b-relativity"/>
+		    <input class="keyboard__radio key-n" type="radio" id="key-n-relativity"/>
+		    <input class="keyboard__radio key-m" type="radio" id="key-m-relativity"/>
+		    <div class="hangman">
+		      <div class="hangman__step hangman__step--1"></div>
+		      <div class="hangman__step hangman__step--2"></div>
+		      <div class="hangman__step hangman__step--3"></div>
+		      <div class="hangman__step hangman__step--4"></div>
+		      <div class="hangman__step hangman__step--5"></div>
+		      <div class="hangman__step hangman__step--6"></div>
+		      <div class="hangman__step hangman__step--7"></div>
+		      <div class="hangman__step hangman__step--8"></div>
+		      <div class="hangman__step hangman__step--9"></div>
+		      <div class="hangman__step hangman__step--10"></div>
+		      <div class="hangman__step hangman__step--11"></div>
+		    </div>
+		    <div class="word"><span class="word__letter letter-r">r</span><span class="word__spacer spacer-r">_</span><span class="word__letter letter-e">e</span><span class="word__spacer spacer-e">_</span><span class="word__letter letter-l">l</span><span class="word__spacer spacer-l">_</span><span class="word__letter letter-a">a</span><span class="word__spacer spacer-a">_</span><span class="word__letter letter-t">t</span><span class="word__spacer spacer-t">_</span><span class="word__letter letter-i">i</span><span class="word__spacer spacer-i">_</span><span class="word__letter letter-v">v</span><span class="word__spacer spacer-v">_</span><span class="word__letter letter-i">i</span><span class="word__spacer spacer-i">_</span><span class="word__letter letter-t">t</span><span class="word__spacer spacer-t">_</span><span class="word__letter letter-y">y</span><span class="word__spacer spacer-y">_</span>
+		    </div>
+		    <div class="keyboard__row">
+		      <label class="keyboard__key key-q" for="key-q-relativity">q</label>
+		      <label class="keyboard__key key-w" for="key-w-relativity">w</label>
+		      <label class="keyboard__key key-e" for="key-e-relativity">e</label>
+		      <label class="keyboard__key key-r" for="key-r-relativity">r</label>
+		      <label class="keyboard__key key-t" for="key-t-relativity">t</label>
+		      <label class="keyboard__key key-y" for="key-y-relativity">y</label>
+		      <label class="keyboard__key key-u" for="key-u-relativity">u</label>
+		      <label class="keyboard__key key-i" for="key-i-relativity">i</label>
+		      <label class="keyboard__key key-o" for="key-o-relativity">o</label>
+		      <label class="keyboard__key key-p" for="key-p-relativity">p</label>
+		    </div>
+		    <div class="keyboard__row">
+		      <label class="keyboard__key key-a" for="key-a-relativity">a</label>
+		      <label class="keyboard__key key-s" for="key-s-relativity">s</label>
+		      <label class="keyboard__key key-d" for="key-d-relativity">d</label>
+		      <label class="keyboard__key key-f" for="key-f-relativity">f</label>
+		      <label class="keyboard__key key-g" for="key-g-relativity">g</label>
+		      <label class="keyboard__key key-h" for="key-h-relativity">h</label>
+		      <label class="keyboard__key key-j" for="key-j-relativity">j</label>
+		      <label class="keyboard__key key-k" for="key-k-relativity">k</label>
+		      <label class="keyboard__key key-l" for="key-l-relativity">l</label>
+		    </div>
+		    <div class="keyboard__row">
+		      <label class="keyboard__key key-z" for="key-z-relativity">z</label>
+		      <label class="keyboard__key key-x" for="key-x-relativity">x</label>
+		      <label class="keyboard__key key-c" for="key-c-relativity">c</label>
+		      <label class="keyboard__key key-v" for="key-v-relativity">v</label>
+		      <label class="keyboard__key key-b" for="key-b-relativity">b</label>
+		      <label class="keyboard__key key-n" for="key-n-relativity">n</label>
+		      <label class="keyboard__key key-m" for="key-m-relativity">m</label>
+		    </div>
+		    <div class="gameover modal">
+		      <main>
+		        <h1>Oh! You have lost</h1>
+		        <h2>The word was ‘relativity’</h2><a class="btn" href="?">Play again</a>
+		      </main>
+		    </div>
+		    <div class="win modal">
+		      <main>
+		        <h1>Congrats! You&nbsp;have&nbsp;won</h1><a class="btn" href="?">Play again</a>
+		      </main>
+		    </div>
+		  </div>
+		  <div class="keyboard">
+		    <input class="keyboard__radio key-q" type="radio" id="key-q-behaviour"/>
+		    <input class="keyboard__radio key-w" type="radio" id="key-w-behaviour"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-e" type="radio" id="key-e-behaviour" required="required"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-r" type="radio" id="key-r-behaviour" required="required"/>
+		    <input class="keyboard__radio key-t" type="radio" id="key-t-behaviour"/>
+		    <input class="keyboard__radio key-y" type="radio" id="key-y-behaviour"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-u" type="radio" id="key-u-behaviour" required="required"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-i" type="radio" id="key-i-behaviour" required="required"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-o" type="radio" id="key-o-behaviour" required="required"/>
+		    <input class="keyboard__radio key-p" type="radio" id="key-p-behaviour"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-a" type="radio" id="key-a-behaviour" required="required"/>
+		    <input class="keyboard__radio key-s" type="radio" id="key-s-behaviour"/>
+		    <input class="keyboard__radio key-d" type="radio" id="key-d-behaviour"/>
+		    <input class="keyboard__radio key-f" type="radio" id="key-f-behaviour"/>
+		    <input class="keyboard__radio key-g" type="radio" id="key-g-behaviour"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-h" type="radio" id="key-h-behaviour" required="required"/>
+		    <input class="keyboard__radio key-j" type="radio" id="key-j-behaviour"/>
+		    <input class="keyboard__radio key-k" type="radio" id="key-k-behaviour"/>
+		    <input class="keyboard__radio key-l" type="radio" id="key-l-behaviour"/>
+		    <input class="keyboard__radio key-z" type="radio" id="key-z-behaviour"/>
+		    <input class="keyboard__radio key-x" type="radio" id="key-x-behaviour"/>
+		    <input class="keyboard__radio key-c" type="radio" id="key-c-behaviour"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-v" type="radio" id="key-v-behaviour" required="required"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-b" type="radio" id="key-b-behaviour" required="required"/>
+		    <input class="keyboard__radio key-n" type="radio" id="key-n-behaviour"/>
+		    <input class="keyboard__radio key-m" type="radio" id="key-m-behaviour"/>
+		    <div class="hangman">
+		      <div class="hangman__step hangman__step--1"></div>
+		      <div class="hangman__step hangman__step--2"></div>
+		      <div class="hangman__step hangman__step--3"></div>
+		      <div class="hangman__step hangman__step--4"></div>
+		      <div class="hangman__step hangman__step--5"></div>
+		      <div class="hangman__step hangman__step--6"></div>
+		      <div class="hangman__step hangman__step--7"></div>
+		      <div class="hangman__step hangman__step--8"></div>
+		      <div class="hangman__step hangman__step--9"></div>
+		      <div class="hangman__step hangman__step--10"></div>
+		      <div class="hangman__step hangman__step--11"></div>
+		    </div>
+		    <div class="word"><span class="word__letter letter-b">b</span><span class="word__spacer spacer-b">_</span><span class="word__letter letter-e">e</span><span class="word__spacer spacer-e">_</span><span class="word__letter letter-h">h</span><span class="word__spacer spacer-h">_</span><span class="word__letter letter-a">a</span><span class="word__spacer spacer-a">_</span><span class="word__letter letter-v">v</span><span class="word__spacer spacer-v">_</span><span class="word__letter letter-i">i</span><span class="word__spacer spacer-i">_</span><span class="word__letter letter-o">o</span><span class="word__spacer spacer-o">_</span><span class="word__letter letter-u">u</span><span class="word__spacer spacer-u">_</span><span class="word__letter letter-r">r</span><span class="word__spacer spacer-r">_</span>
+		    </div>
+		    <div class="keyboard__row">
+		      <label class="keyboard__key key-q" for="key-q-behaviour">q</label>
+		      <label class="keyboard__key key-w" for="key-w-behaviour">w</label>
+		      <label class="keyboard__key key-e" for="key-e-behaviour">e</label>
+		      <label class="keyboard__key key-r" for="key-r-behaviour">r</label>
+		      <label class="keyboard__key key-t" for="key-t-behaviour">t</label>
+		      <label class="keyboard__key key-y" for="key-y-behaviour">y</label>
+		      <label class="keyboard__key key-u" for="key-u-behaviour">u</label>
+		      <label class="keyboard__key key-i" for="key-i-behaviour">i</label>
+		      <label class="keyboard__key key-o" for="key-o-behaviour">o</label>
+		      <label class="keyboard__key key-p" for="key-p-behaviour">p</label>
+		    </div>
+		    <div class="keyboard__row">
+		      <label class="keyboard__key key-a" for="key-a-behaviour">a</label>
+		      <label class="keyboard__key key-s" for="key-s-behaviour">s</label>
+		      <label class="keyboard__key key-d" for="key-d-behaviour">d</label>
+		      <label class="keyboard__key key-f" for="key-f-behaviour">f</label>
+		      <label class="keyboard__key key-g" for="key-g-behaviour">g</label>
+		      <label class="keyboard__key key-h" for="key-h-behaviour">h</label>
+		      <label class="keyboard__key key-j" for="key-j-behaviour">j</label>
+		      <label class="keyboard__key key-k" for="key-k-behaviour">k</label>
+		      <label class="keyboard__key key-l" for="key-l-behaviour">l</label>
+		    </div>
+		    <div class="keyboard__row">
+		      <label class="keyboard__key key-z" for="key-z-behaviour">z</label>
+		      <label class="keyboard__key key-x" for="key-x-behaviour">x</label>
+		      <label class="keyboard__key key-c" for="key-c-behaviour">c</label>
+		      <label class="keyboard__key key-v" for="key-v-behaviour">v</label>
+		      <label class="keyboard__key key-b" for="key-b-behaviour">b</label>
+		      <label class="keyboard__key key-n" for="key-n-behaviour">n</label>
+		      <label class="keyboard__key key-m" for="key-m-behaviour">m</label>
+		    </div>
+		    <div class="gameover modal">
+		      <main>
+		        <h1>Oh! You have lost</h1>
+		        <h2>The word was ‘behaviour’</h2><a class="btn" href="?">Play again</a>
+		      </main>
+		    </div>
+		    <div class="win modal">
+		      <main>
+		        <h1>Congrats! You&nbsp;have&nbsp;won</h1><a class="btn" href="?">Play again</a>
+		      </main>
+		    </div>
+		  </div>
+		  <div class="keyboard">
+		    <input class="keyboard__radio key-q" type="radio" id="key-q-chocolate"/>
+		    <input class="keyboard__radio key-w" type="radio" id="key-w-chocolate"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-e" type="radio" id="key-e-chocolate" required="required"/>
+		    <input class="keyboard__radio key-r" type="radio" id="key-r-chocolate"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-t" type="radio" id="key-t-chocolate" required="required"/>
+		    <input class="keyboard__radio key-y" type="radio" id="key-y-chocolate"/>
+		    <input class="keyboard__radio key-u" type="radio" id="key-u-chocolate"/>
+		    <input class="keyboard__radio key-i" type="radio" id="key-i-chocolate"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-o" type="radio" id="key-o-chocolate" required="required"/>
+		    <input class="keyboard__radio key-p" type="radio" id="key-p-chocolate"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-a" type="radio" id="key-a-chocolate" required="required"/>
+		    <input class="keyboard__radio key-s" type="radio" id="key-s-chocolate"/>
+		    <input class="keyboard__radio key-d" type="radio" id="key-d-chocolate"/>
+		    <input class="keyboard__radio key-f" type="radio" id="key-f-chocolate"/>
+		    <input class="keyboard__radio key-g" type="radio" id="key-g-chocolate"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-h" type="radio" id="key-h-chocolate" required="required"/>
+		    <input class="keyboard__radio key-j" type="radio" id="key-j-chocolate"/>
+		    <input class="keyboard__radio key-k" type="radio" id="key-k-chocolate"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-l" type="radio" id="key-l-chocolate" required="required"/>
+		    <input class="keyboard__radio key-z" type="radio" id="key-z-chocolate"/>
+		    <input class="keyboard__radio key-x" type="radio" id="key-x-chocolate"/>
+		    <input class="keyboard__radio keyboard__radio--in-word key-c" type="radio" id="key-c-chocolate" required="required"/>
+		    <input class="keyboard__radio key-v" type="radio" id="key-v-chocolate"/>
+		    <input class="keyboard__radio key-b" type="radio" id="key-b-chocolate"/>
+		    <input class="keyboard__radio key-n" type="radio" id="key-n-chocolate"/>
+		    <input class="keyboard__radio key-m" type="radio" id="key-m-chocolate"/>
+		    <div class="hangman">
+		      <div class="hangman__step hangman__step--1"></div>
+		      <div class="hangman__step hangman__step--2"></div>
+		      <div class="hangman__step hangman__step--3"></div>
+		      <div class="hangman__step hangman__step--4"></div>
+		      <div class="hangman__step hangman__step--5"></div>
+		      <div class="hangman__step hangman__step--6"></div>
+		      <div class="hangman__step hangman__step--7"></div>
+		      <div class="hangman__step hangman__step--8"></div>
+		      <div class="hangman__step hangman__step--9"></div>
+		      <div class="hangman__step hangman__step--10"></div>
+		      <div class="hangman__step hangman__step--11"></div>
+		    </div>
+		    <div class="word"><span class="word__letter letter-c">c</span><span class="word__spacer spacer-c">_</span><span class="word__letter letter-h">h</span><span class="word__spacer spacer-h">_</span><span class="word__letter letter-o">o</span><span class="word__spacer spacer-o">_</span><span class="word__letter letter-c">c</span><span class="word__spacer spacer-c">_</span><span class="word__letter letter-o">o</span><span class="word__spacer spacer-o">_</span><span class="word__letter letter-l">l</span><span class="word__spacer spacer-l">_</span><span class="word__letter letter-a">a</span><span class="word__spacer spacer-a">_</span><span class="word__letter letter-t">t</span><span class="word__spacer spacer-t">_</span><span class="word__letter letter-e">e</span><span class="word__spacer spacer-e">_</span>
+		    </div>
+		    <div class="keyboard__row">
+		      <label class="keyboard__key key-q" for="key-q-chocolate">q</label>
+		      <label class="keyboard__key key-w" for="key-w-chocolate">w</label>
+		      <label class="keyboard__key key-e" for="key-e-chocolate">e</label>
+		      <label class="keyboard__key key-r" for="key-r-chocolate">r</label>
+		      <label class="keyboard__key key-t" for="key-t-chocolate">t</label>
+		      <label class="keyboard__key key-y" for="key-y-chocolate">y</label>
+		      <label class="keyboard__key key-u" for="key-u-chocolate">u</label>
+		      <label class="keyboard__key key-i" for="key-i-chocolate">i</label>
+		      <label class="keyboard__key key-o" for="key-o-chocolate">o</label>
+		      <label class="keyboard__key key-p" for="key-p-chocolate">p</label>
+		    </div>
+		    <div class="keyboard__row">
+		      <label class="keyboard__key key-a" for="key-a-chocolate">a</label>
+		      <label class="keyboard__key key-s" for="key-s-chocolate">s</label>
+		      <label class="keyboard__key key-d" for="key-d-chocolate">d</label>
+		      <label class="keyboard__key key-f" for="key-f-chocolate">f</label>
+		      <label class="keyboard__key key-g" for="key-g-chocolate">g</label>
+		      <label class="keyboard__key key-h" for="key-h-chocolate">h</label>
+		      <label class="keyboard__key key-j" for="key-j-chocolate">j</label>
+		      <label class="keyboard__key key-k" for="key-k-chocolate">k</label>
+		      <label class="keyboard__key key-l" for="key-l-chocolate">l</label>
+		    </div>
+		    <div class="keyboard__row">
+		      <label class="keyboard__key key-z" for="key-z-chocolate">z</label>
+		      <label class="keyboard__key key-x" for="key-x-chocolate">x</label>
+		      <label class="keyboard__key key-c" for="key-c-chocolate">c</label>
+		      <label class="keyboard__key key-v" for="key-v-chocolate">v</label>
+		      <label class="keyboard__key key-b" for="key-b-chocolate">b</label>
+		      <label class="keyboard__key key-n" for="key-n-chocolate">n</label>
+		      <label class="keyboard__key key-m" for="key-m-chocolate">m</label>
+		    </div>
+		    <div class="gameover modal">
+		      <main>
+		        <h1>Oh! You have lost</h1>
+		        <h2>The word was ‘chocolate’</h2><a class="btn" href="?">Play again</a>
+		      </main>
+		    </div>
+		    <div class="win modal">
+		      <main>
+		        <h1>Congrats! You&nbsp;have&nbsp;won</h1><a class="btn" href="?">Play again</a>
+		      </main>
+		    </div>
+		  </div>
+		</div>
+	</body>
+</html>

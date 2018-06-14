@@ -1,0 +1,383 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono')
+
+=kf($n)
+  $basePercentage: floor(1 / ($n - 1) * 100)
+
+  @keyframes randomiser
+    @for $i from 0 to $n
+      @if $i < $n - 1
+        #{$basePercentage * $i}%, #{$basePercentage * ( $i + 1 ) - 0.01}%
+          transform: translateX($i * 100%)
+      
+      @else
+        #{$basePercentage * $i}%, #{100 - 0.01}%
+          transform: translateX($i * 100%)
+        
+    100%
+      transform: translateX(0%)
+
+=hg($n)
+  & ~ .keyboard__radio:checked:not(.keyboard__radio--in-word)
+    & ~ .hangman
+      div:nth-child(#{$n})
+        opacity: 1
+    
+    @content
+
+=hangman($maxN, $n: 2)
+  +hg($n)
+    @if $n < $maxN
+      +hangman($maxN, $n + 1)
+    
+    @else
+      & ~ .gameover
+        visibility: visible
+        opacity: 1
+        transition: opacity .3s ease-in-out, visibility 0s 0s
+
+        
+        
+        
+
+$keys: ("q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "a", "s", "d", "f", "g", "h", "j", "k", "l", "z", "x", "c", "v", "b", "n", "m")
+
+$words: ('technology', 'javascript', 'value', 'industry', 'impression', 'resurrection', 'relativity', 'behaviour', 'chocolate')
+$length: length($words)
+$randomiseSpeed: 50
+
+$main-color: #FBC02D
+$success-color: #2E7D32
+$error-color: #B71C1C
+
+$text-color: #000
+
+body
+  font-family: "Roboto Mono", monospace
+  font-size: 24px
+  margin: 0
+  background: $main-color
+  color: $text-color
+  overflow: hidden
+  width: 100vw
+  height: 100vh
+
+.btn
+  font-family: Roboto, sans-serif
+  text-transform: uppercase
+  height: 2em
+  line-height: 2em
+  padding: 0 1.2em
+  border-radius: .15em
+  cursor: pointer
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.35)
+  text-decoration: none
+  color: $text-color
+  background: #fff
+  margin-top: 1rem
+  transition: box-shadow .2s ease-in-out, transform .2s ease-in-out
+  
+  &:hover, &:focus
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.26)
+    transform: translateY(-2px)
+  
+    &:active
+      box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.35)
+      transform: translateY(0)
+  
+.modal
+  display: flex
+  justify-content: center
+  align-items: center
+  flex-direction: column
+  position: fixed
+  top: 0
+  left: 0
+  width: 100vw
+  height: 100vh
+  z-index: 999
+  background: $main-color
+  visibility: hidden
+  opacity: 0
+  transition: opacity .3s ease-in-out, visibility 0s .3s
+  
+  &.win, &.random
+    visibility: visible
+    opacity: 1
+    transition: opacity .3s ease-in-out, visibility 0s 0s
+    
+  main
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-direction: column
+  
+  h1
+    font-size: 2em
+    text-transform: uppercase
+    margin: 0
+    text-align: center
+    
+  h2
+    font-size: 1.5em
+    margin: 0
+  
+#randomise
+  position: absolute
+  z-index: 999
+  display: none
+  
+  &:checked
+    & ~ .games .keyboard
+      animation-play-state: paused
+    
+      &:first-child
+        animation: none
+    
+    & ~ .modal.random
+      visibility: hidden
+      opacity: 0
+      transition: opacity .3s ease-in-out, visibility 0s .3s
+    
+.games
+  position: relative
+  width: 100%
+  height: 100%
+
+.keyboard
+  background: $main-color
+  height: 100%
+  padding: 1rem
+  box-sizing: border-box
+
+  &:not(:first-child)
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+  
+  @for $i from 0 to $length
+    &:nth-child(#{$i + 1})
+      transform: translateX($i*100%)
+      animation: randomiser ($length/$randomiseSpeed) * 1s ($i/$randomiseSpeed) * 1s infinite
+  
+  &__row
+    display: flex
+    justify-content: center
+    margin: 8px 0
+
+  &__key
+    display: flex
+    align-items: center
+    justify-content: center
+    width: 56px
+    height: 56px
+    text-align: center
+    box-shadow: 0 1px 5px rgba(0,0,0,0.3)
+    font-size: 32px
+    text-transform: uppercase
+    border-radius: 2px
+    margin: 0 4px
+    cursor: pointer
+    transform: translateY(0)
+    transition: box-shadow .2s ease-in-out, transform .2s ease-in-out
+    background: #fff
+    
+    &:hover, &:focus
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3)
+      transform: translateY(-4px)
+      outline: 0
+    
+      &:active
+        box-shadow: 0 1px 5px rgba(0,0,0,0.3)
+        transform: translateY(0)
+    
+  &__radio
+    display: none
+
+    @each $key in $keys
+      &.key-#{$key}:checked
+        & ~ .keyboard__row label.key-#{$key}
+          background: $error-color
+          color: #fff
+          cursor: no-drop
+
+          &:focus, &:hover, &:active
+            box-shadow: 0 1px 5px rgba(0,0,0,0.3)
+            transform: translateY(0)
+
+          &:focus
+            outline: auto
+
+        & ~ .word
+          .word__letter.letter-#{$key}
+            display: block
+
+          .word__spacer.spacer-#{$key}
+            display: none
+
+      &--in-word
+        &.key-#{$key}:checked
+          & ~ .keyboard__row label.key-#{$key}
+            background: $success-color
+            color: #fff
+            cursor: no-drop
+
+.word
+  display: flex
+  justify-content: center
+  font-size: 64px
+  text-transform: uppercase
+  
+  &__letter
+    display: none
+    
+  &__spacer, &__letter
+    padding: 0 6px
+    
+    
+.hangman
+  max-width: 400px
+  width: 100%
+  position: relative
+  margin: 0 auto
+  
+  &::after
+    content: ""
+    display: block
+    padding-bottom: 100%
+  
+  &__step
+    opacity: 0
+    transition: opacity .3s ease-in-out
+
+    &--1
+      position: absolute
+      bottom: 0
+      left: 50%
+      transform: translateX(-50%)
+      width: 100%
+      height: 8px
+      background: $text-color
+      border-radius: 8px 8px 8px 8px
+
+    &--2
+      position: absolute
+      bottom: 0
+      left: 25%
+      height: 100%
+      width: 8px
+      background: $text-color
+      border-radius: 8px 8px 0 0
+
+    &--3
+      position: absolute
+      top: 0
+      left: 25%
+      width: 50%
+      height: 8px
+      background: $text-color
+      border-radius: 8px 8px 8px 0
+
+    &--4
+      position: absolute
+      top: -10px
+      left: calc(25% + 36px)
+      width: 8px
+      height: 25%
+      background: $text-color
+      transform: rotate(45deg)
+
+    &--5
+      position: absolute
+      top: 0
+      left: calc(75% - 8px)
+      width: 8px
+      height: calc(15% + 8px)
+      background: $text-color
+      border-radius: 0 8px 8px 8px
+
+    &--6
+      position: absolute
+      top: 15%
+      left: calc(75% - 4px)
+      width: 20%
+      height: 20%
+      transform: translateX(-50%)
+      border: 8px solid $text-color
+      border-radius: 50%
+      box-sizing: border-box
+
+    &--7
+      position: absolute
+      top: 35%
+      left: calc(75% - 8px)
+      width: 8px
+      height: 20%
+      background: $text-color
+      border-radius: 0 0 8px 8px
+
+    &--8
+      position: absolute
+      top: 35%
+      left: calc(75% - 8px)
+      width: 8px
+      height: 15%
+      background: $text-color
+      transform: translateY(-25%) rotate(-45deg)
+      transform-origin: bottom center
+      border-radius: 8px 8px 0 0
+
+    &--9
+      position: absolute
+      top: 35%
+      left: calc(75% - 8px)
+      width: 8px
+      height: 15%
+      background: $text-color
+      transform: translateY(-25%) rotate(45deg)
+      transform-origin: bottom center
+      border-radius: 8px 8px 0 0
+
+    &--10
+      position: absolute
+      top: 54%
+      left: calc(75% - 7px)
+      width: 8px
+      height: 20%
+      background: $text-color
+      transform: rotate(30deg)
+      transform-origin: top center
+      border-radius: 0 0 8px 8px
+
+
+    &--11
+      position: absolute
+      top: 54%
+      left: calc(75% - 9px)
+      width: 8px
+      height: 20%
+      background: $text-color
+      transform: rotate(-30deg)
+      transform-origin: top center
+      border-radius: 0 0 8px 8px
+
+.keyboard__radio:checked:not(.keyboard__radio--in-word)
+    & ~ .hangman
+      div:nth-child(1)
+        opacity: 1
+
+    +hangman(11)
+    
+input[required]
+  & ~ input[required]:not(:checked)
+    & ~ .win
+      visibility: hidden
+      opacity: 0
+
+input[required]:not(:checked)
+  & ~ input[required]
+    & ~ .win
+      visibility: hidden
+      opacity: 0
+  
++kf($length)

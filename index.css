@@ -1,0 +1,1117 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono");
+body {
+  font-family: "Roboto Mono", monospace;
+  font-size: 24px;
+  margin: 0;
+  background: #FBC02D;
+  color: #000;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+}
+
+.btn {
+  font-family: Roboto, sans-serif;
+  text-transform: uppercase;
+  height: 2em;
+  line-height: 2em;
+  padding: 0 1.2em;
+  border-radius: 0.15em;
+  cursor: pointer;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.35);
+  text-decoration: none;
+  color: #000;
+  background: #fff;
+  margin-top: 1rem;
+  transition: box-shadow 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+  transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+  transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+}
+.btn:hover, .btn:focus {
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.26);
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+}
+.btn:hover:active, .btn:focus:active {
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.35);
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999;
+  background: #FBC02D;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out, visibility 0s 0.3s;
+}
+.modal.win, .modal.random {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out, visibility 0s 0s;
+}
+.modal main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.modal h1 {
+  font-size: 2em;
+  text-transform: uppercase;
+  margin: 0;
+  text-align: center;
+}
+.modal h2 {
+  font-size: 1.5em;
+  margin: 0;
+}
+
+#randomise {
+  position: absolute;
+  z-index: 999;
+  display: none;
+}
+#randomise:checked ~ .games .keyboard {
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+}
+#randomise:checked ~ .games .keyboard:first-child {
+  -webkit-animation: none;
+          animation: none;
+}
+#randomise:checked ~ .modal.random {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out, visibility 0s 0.3s;
+}
+
+.games {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.keyboard {
+  background: #FBC02D;
+  height: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+.keyboard:not(:first-child) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.keyboard:nth-child(1) {
+  -webkit-transform: translateX(0%);
+          transform: translateX(0%);
+  -webkit-animation: randomiser 0.18s 0s infinite;
+          animation: randomiser 0.18s 0s infinite;
+}
+.keyboard:nth-child(2) {
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+  -webkit-animation: randomiser 0.18s 0.02s infinite;
+          animation: randomiser 0.18s 0.02s infinite;
+}
+.keyboard:nth-child(3) {
+  -webkit-transform: translateX(200%);
+          transform: translateX(200%);
+  -webkit-animation: randomiser 0.18s 0.04s infinite;
+          animation: randomiser 0.18s 0.04s infinite;
+}
+.keyboard:nth-child(4) {
+  -webkit-transform: translateX(300%);
+          transform: translateX(300%);
+  -webkit-animation: randomiser 0.18s 0.06s infinite;
+          animation: randomiser 0.18s 0.06s infinite;
+}
+.keyboard:nth-child(5) {
+  -webkit-transform: translateX(400%);
+          transform: translateX(400%);
+  -webkit-animation: randomiser 0.18s 0.08s infinite;
+          animation: randomiser 0.18s 0.08s infinite;
+}
+.keyboard:nth-child(6) {
+  -webkit-transform: translateX(500%);
+          transform: translateX(500%);
+  -webkit-animation: randomiser 0.18s 0.1s infinite;
+          animation: randomiser 0.18s 0.1s infinite;
+}
+.keyboard:nth-child(7) {
+  -webkit-transform: translateX(600%);
+          transform: translateX(600%);
+  -webkit-animation: randomiser 0.18s 0.12s infinite;
+          animation: randomiser 0.18s 0.12s infinite;
+}
+.keyboard:nth-child(8) {
+  -webkit-transform: translateX(700%);
+          transform: translateX(700%);
+  -webkit-animation: randomiser 0.18s 0.14s infinite;
+          animation: randomiser 0.18s 0.14s infinite;
+}
+.keyboard:nth-child(9) {
+  -webkit-transform: translateX(800%);
+          transform: translateX(800%);
+  -webkit-animation: randomiser 0.18s 0.16s infinite;
+          animation: randomiser 0.18s 0.16s infinite;
+}
+.keyboard__row {
+  display: flex;
+  justify-content: center;
+  margin: 8px 0;
+}
+.keyboard__key {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  text-align: center;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  font-size: 32px;
+  text-transform: uppercase;
+  border-radius: 2px;
+  margin: 0 4px;
+  cursor: pointer;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+  transition: box-shadow 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+  transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+  transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+  background: #fff;
+}
+.keyboard__key:hover, .keyboard__key:focus {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  -webkit-transform: translateY(-4px);
+          transform: translateY(-4px);
+  outline: 0;
+}
+.keyboard__key:hover:active, .keyboard__key:focus:active {
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+.keyboard__radio {
+  display: none;
+}
+.keyboard__radio.key-q:checked ~ .keyboard__row label.key-q {
+  background: #B71C1C;
+  color: #fff;
+  cursor: no-drop;
+}
+.keyboard__radio.key-q:checked ~ .keyboard__row label.key-q:focus, .keyboard__radio.key-q:checked ~ .keyboard__row label.key-q:hover, .keyboard__radio.key-q:checked ~ .keyboard__row label.key-q:active {
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+.keyboard__radio.key-q:checked ~ .keyboard__row label.key-q:focus {
+  outline: auto;
+}
+.keyboard__radio.key-q:checked ~ .word .word__letter.letter-q {
+  display: block;
+}
+.keyboard__radio.key-q:checked ~ .word .word__spacer.spacer-q {
+  display: none;
+}
+.keyboard__radio--in-word.key-q:checked ~ .keyboard__row label.key-q {
+  background: #2E7D32;
+  color: #fff;
+  cursor: no-drop;
+}
+.keyboard__radio.key-w:checked ~ .keyboard__row label.key-w {
+  background: #B71C1C;
+  color: #fff;
+  cursor: no-drop;
+}
+.keyboard__radio.key-w:checked ~ .keyboard__row label.key-w:focus, .keyboard__radio.key-w:checked ~ .keyboard__row label.key-w:hover, .keyboard__radio.key-w:checked ~ .keyboard__row label.key-w:active {
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+.keyboard__radio.key-w:checked ~ .keyboard__row label.key-w:focus {
+  outline: auto;
+}
+.keyboard__radio.key-w:checked ~ .word .word__letter.letter-w {
+  display: block;
+}
+.keyboard__radio.key-w:checked ~ .word .word__spacer.spacer-w {
+  display: none;
+}
+.keyboard__radio--in-word.key-w:checked ~ .keyboard__row label.key-w {
+  background: #2E7D32;
+  color: #fff;
+  cursor: no-drop;
+}
+.keyboard__radio.key-e:checked ~ .keyboard__row label.key-e {
+  background: #B71C1C;
+  color: #fff;
+  cursor: no-drop;
+}
+.keyboard__radio.key-e:checked ~ .keyboard__row label.key-e:focus, .keyboard__radio.key-e:checked ~ .keyboard__row label.key-e:hover, .keyboard__radio.key-e:checked ~ .keyboard__row label.key-e:active {
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+.keyboard__radio.key-e:checked ~ .keyboard__row label.key-e:focus {
+  outline: auto;
+}
+.keyboard__radio.key-e:checked ~ .word .word__letter.letter-e {
+  display: block;
+}
+.keyboard__radio.key-e:checked ~ .word .word__spacer.spacer-e {
+  display: none;
+}
+.keyboard__radio--in-word.key-e:checked ~ .keyboard__row label.key-e {
+  background: #2E7D32;
+  color: #fff;
+  cursor: no-drop;
+}
+.keyboard__radio.key-r:checked ~ .keyboard__row label.key-r {
+  background: #B71C1C;
+  color: #fff;
+  cursor: no-drop;
+}
+.keyboard__radio.key-r:checked ~ .keyboard__row label.key-r:focus, .keyboard__radio.key-r:checked ~ .keyboard__row label.key-r:hover, .keyboard__radio.key-r:checked ~ .keyboard__row label.key-r:active {
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+.keyboard__radio.key-r:checked ~ .keyboard__row label.key-r:focus {
+  outline: auto;
+}
+.keyboard__radio.key-r:checked ~ .word .word__letter.letter-r {
+  display: block;
+}
+.keyboard__radio.key-r:checked ~ .word .word__spacer.spacer-r {
+  display: none;
+}
+.keyboard__radio--in-word.key-r:checked ~ .keyboard__row label.key-r {
+  background: #2E7D32;
+  color: #fff;
+  cursor: no-drop;
+}
+.keyboard__radio.key-t:checked ~ .keyboard__row label.key-t {
+  background: #B71C1C;
+  color: #fff;
+  cursor: no-drop;
+}
+.keyboard__radio.key-t:checked ~ .keyboard__row label.key-t:focus, .keyboard__radio.key-t:checked ~ .keyboard__row label.key-t:hover, .keyboard__radio.key-t:checked ~ .keyboard__row label.key-t:active {
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+.keyboard__radio.key-t:checked ~ .keyboard__row label.key-t:focus {
+  outline: auto;
+}
+.keyboard__radio.key-t:checked ~ .word .word__letter.letter-t {
+  display: block;
+}
+.keyboard__radio.key-t:checked ~ .word .word__spacer.spacer-t {
+  display: none;
+}
+.keyboard__radio--in-word.key-t:checked ~ .keyboard__row label.key-t {
+  background: #2E7D32;
+  color: #fff;
+  cursor: no-drop;
+}
+.keyboard__radio.key-y:checked ~ .keyboard__row label.key-y {
+  background: #B71C1C;
+  color: #fff;
+  cursor: no-drop;
+}
+.keyboard__radio.key-y:checked ~ .keyboard__row label.key-y:focus, .keyboard__radio.key-y:checked ~ .keyboard__row label.key-y:hover, .keyboard__radio.key-y:checked ~ .keyboard__row label.key-y:active {
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+.keyboard__radio.key-y:checked ~ .keyboard__row label.key-y:focus {
+  outline: auto;
+}
+.keyboard__radio.key-y:checked ~ .word .word__letter.letter-y {
+  display: block;
+}
+.keyboard__radio.key-y:checked ~ .word .word__spacer.spacer-y {
+  display: none;
+}
+.keyboard__radio--in-word.key-y:checked ~ .keyboard__row label.key-y {
+  background: #2E7D32;
+  color: #fff;
+  cursor: no-drop;
+}
+.keyboard__radio.key-u:checked ~ .keyboard__row label.key-u {
+  background: #B71C1C;
+  color: #fff;
+  cursor: no-drop;
+}
+.keyboard__radio.key-u:checked ~ .keyboard__row label.key-u:focus, .keyboard__radio.key-u:checked ~ .keyboard__row label.key-u:hover, .keyboard__radio.key-u:checked ~ .keyboard__row label.key-u:active {
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+.keyboard__radio.key-u:checked ~ .keyboard__row label.key-u:focus {
+  outline: auto;
+}
+.keyboard__radio.key-u:checked ~ .word .word__letter.letter-u {
+  display: block;
+}
+.keyboard__radio.key-u:checked ~ .word .word__spacer.spacer-u {
+  display: none;
+}
+.keyboard__radio--in-word.key-u:checked ~ .keyboard__row label.key-u {
+  background: #2E7D32;
+  color: #fff;
+  cursor: no-drop;
+}
+.keyboard__radio.key-i:checked ~ .keyboard__row label.key-i {
+  background: #B71C1C;
+  color: #fff;
+  cursor: no-drop;
+}
+.keyboard__radio.key-i:checked ~ .keyboard__row label.key-i:focus, .keyboard__radio.key-i:checked ~ .keyboard__row label.key-i:hover, .keyboard__radio.key-i:checked ~ .keyboard__row label.key-i:active {
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+.keyboard__radio.key-i:checked ~ .keyboard__row label.key-i:focus {
+  outline: auto;
+}
+.keyboard__radio.key-i:checked ~ .word .word__letter.letter-i {
+  display: block;
+}
+.keyboard__radio.key-i:checked ~ .word .word__spacer.spacer-i {
+  display: none;
+}
+.keyboard__radio--in-word.key-i:checked ~ .keyboard__row label.key-i {
+  background: #2E7D32;
+  color: #fff;
+  cursor: no-drop;
+}
+.keyboard__radio.key-o:checked ~ .keyboard__row label.key-o {
+  background: #B71C1C;
+  color: #fff;
+  cursor: no-drop;
+}
+.keyboard__radio.key-o:checked ~ .keyboard__row label.key-o:focus, .keyboard__radio.key-o:checked ~ .keyboard__row label.key-o:hover, .keyboard__radio.key-o:checked ~ .keyboard__row label.key-o:active {
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+.keyboard__radio.key-o:checked ~ .keyboard__row label.key-o:focus {
+  outline: auto;
+}
+.keyboard__radio.key-o:checked ~ .word .word__letter.letter-o {
+  display: block;
+}
+.keyboard__radio.key-o:checked ~ .word .word__spacer.spacer-o {
+  display: none;
+}
+.keyboard__radio--in-word.key-o:checked ~ .keyboard__row label.key-o {
+  background: #2E7D32;
+  color: #fff;
+  cursor: no-drop;
+}
+.keyboard__radio.key-p:checked ~ .keyboard__row label.key-p {
+  background: #B71C1C;
+  color: #fff;
+  cursor: no-drop;
+}
+.keyboard__radio.key-p:checked ~ .keyboard__row label.key-p:focus, .keyboard__radio.key-p:checked ~ .keyboard__row label.key-p:hover, .keyboard__radio.key-p:checked ~ .keyboard__row label.key-p:active {
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+.keyboard__radio.key-p:checked ~ .keyboard__row label.key-p:focus {
+  outline: auto;
+}
+.keyboard__radio.key-p:checked ~ .word .word__letter.letter-p {
+  display: block;
+}
+.keyboard__radio.key-p:checked ~ .word .word__spacer.spacer-p {
+  display: none;
+}
+.keyboard__radio--in-word.key-p:checked ~ .keyboard__row label.key-p {
+  background: #2E7D32;
+  color: #fff;
+  cursor: no-drop;
+}
+.keyboard__radio.key-a:checked ~ .keyboard__row label.key-a {
+  background: #B71C1C;
+  color: #fff;
+  cursor: no-drop;
+}
+.keyboard__radio.key-a:checked ~ .keyboard__row label.key-a:focus, .keyboard__radio.key-a:checked ~ .keyboard__row label.key-a:hover, .keyboard__radio.key-a:checked ~ .keyboard__row label.key-a:active {
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+.keyboard__radio.key-a:checked ~ .keyboard__row label.key-a:focus {
+  outline: auto;
+}
+.keyboard__radio.key-a:checked ~ .word .word__letter.letter-a {
+  display: block;
+}
+.keyboard__radio.key-a:checked ~ .word .word__spacer.spacer-a {
+  display: none;
+}
+.keyboard__radio--in-word.key-a:checked ~ .keyboard__row label.key-a {
+  background: #2E7D32;
+  color: #fff;
+  cursor: no-drop;
+}
+.keyboard__radio.key-s:checked ~ .keyboard__row label.key-s {
+  background: #B71C1C;
+  color: #fff;
+  cursor: no-drop;
+}
+.keyboard__radio.key-s:checked ~ .keyboard__row label.key-s:focus, .keyboard__radio.key-s:checked ~ .keyboard__row label.key-s:hover, .keyboard__radio.key-s:checked ~ .keyboard__row label.key-s:active {
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+.keyboard__radio.key-s:checked ~ .keyboard__row label.key-s:focus {
+  outline: auto;
+}
+.keyboard__radio.key-s:checked ~ .word .word__letter.letter-s {
+  display: block;
+}
+.keyboard__radio.key-s:checked ~ .word .word__spacer.spacer-s {
+  display: none;
+}
+.keyboard__radio--in-word.key-s:checked ~ .keyboard__row label.key-s {
+  background: #2E7D32;
+  color: #fff;
+  cursor: no-drop;
+}
+.keyboard__radio.key-d:checked ~ .keyboard__row label.key-d {
+  background: #B71C1C;
+  color: #fff;
+  cursor: no-drop;
+}
+.keyboard__radio.key-d:checked ~ .keyboard__row label.key-d:focus, .keyboard__radio.key-d:checked ~ .keyboard__row label.key-d:hover, .keyboard__radio.key-d:checked ~ .keyboard__row label.key-d:active {
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+.keyboard__radio.key-d:checked ~ .keyboard__row label.key-d:focus {
+  outline: auto;
+}
+.keyboard__radio.key-d:checked ~ .word .word__letter.letter-d {
+  display: block;
+}
+.keyboard__radio.key-d:checked ~ .word .word__spacer.spacer-d {
+  display: none;
+}
+.keyboard__radio--in-word.key-d:checked ~ .keyboard__row label.key-d {
+  background: #2E7D32;
+  color: #fff;
+  cursor: no-drop;
+}
+.keyboard__radio.key-f:checked ~ .keyboard__row label.key-f {
+  background: #B71C1C;
+  color: #fff;
+  cursor: no-drop;
+}
+.keyboard__radio.key-f:checked ~ .keyboard__row label.key-f:focus, .keyboard__radio.key-f:checked ~ .keyboard__row label.key-f:hover, .keyboard__radio.key-f:checked ~ .keyboard__row label.key-f:active {
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+.keyboard__radio.key-f:checked ~ .keyboard__row label.key-f:focus {
+  outline: auto;
+}
+.keyboard__radio.key-f:checked ~ .word .word__letter.letter-f {
+  display: block;
+}
+.keyboard__radio.key-f:checked ~ .word .word__spacer.spacer-f {
+  display: none;
+}
+.keyboard__radio--in-word.key-f:checked ~ .keyboard__row label.key-f {
+  background: #2E7D32;
+  color: #fff;
+  cursor: no-drop;
+}
+.keyboard__radio.key-g:checked ~ .keyboard__row label.key-g {
+  background: #B71C1C;
+  color: #fff;
+  cursor: no-drop;
+}
+.keyboard__radio.key-g:checked ~ .keyboard__row label.key-g:focus, .keyboard__radio.key-g:checked ~ .keyboard__row label.key-g:hover, .keyboard__radio.key-g:checked ~ .keyboard__row label.key-g:active {
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+.keyboard__radio.key-g:checked ~ .keyboard__row label.key-g:focus {
+  outline: auto;
+}
+.keyboard__radio.key-g:checked ~ .word .word__letter.letter-g {
+  display: block;
+}
+.keyboard__radio.key-g:checked ~ .word .word__spacer.spacer-g {
+  display: none;
+}
+.keyboard__radio--in-word.key-g:checked ~ .keyboard__row label.key-g {
+  background: #2E7D32;
+  color: #fff;
+  cursor: no-drop;
+}
+.keyboard__radio.key-h:checked ~ .keyboard__row label.key-h {
+  background: #B71C1C;
+  color: #fff;
+  cursor: no-drop;
+}
+.keyboard__radio.key-h:checked ~ .keyboard__row label.key-h:focus, .keyboard__radio.key-h:checked ~ .keyboard__row label.key-h:hover, .keyboard__radio.key-h:checked ~ .keyboard__row label.key-h:active {
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+.keyboard__radio.key-h:checked ~ .keyboard__row label.key-h:focus {
+  outline: auto;
+}
+.keyboard__radio.key-h:checked ~ .word .word__letter.letter-h {
+  display: block;
+}
+.keyboard__radio.key-h:checked ~ .word .word__spacer.spacer-h {
+  display: none;
+}
+.keyboard__radio--in-word.key-h:checked ~ .keyboard__row label.key-h {
+  background: #2E7D32;
+  color: #fff;
+  cursor: no-drop;
+}
+.keyboard__radio.key-j:checked ~ .keyboard__row label.key-j {
+  background: #B71C1C;
+  color: #fff;
+  cursor: no-drop;
+}
+.keyboard__radio.key-j:checked ~ .keyboard__row label.key-j:focus, .keyboard__radio.key-j:checked ~ .keyboard__row label.key-j:hover, .keyboard__radio.key-j:checked ~ .keyboard__row label.key-j:active {
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+.keyboard__radio.key-j:checked ~ .keyboard__row label.key-j:focus {
+  outline: auto;
+}
+.keyboard__radio.key-j:checked ~ .word .word__letter.letter-j {
+  display: block;
+}
+.keyboard__radio.key-j:checked ~ .word .word__spacer.spacer-j {
+  display: none;
+}
+.keyboard__radio--in-word.key-j:checked ~ .keyboard__row label.key-j {
+  background: #2E7D32;
+  color: #fff;
+  cursor: no-drop;
+}
+.keyboard__radio.key-k:checked ~ .keyboard__row label.key-k {
+  background: #B71C1C;
+  color: #fff;
+  cursor: no-drop;
+}
+.keyboard__radio.key-k:checked ~ .keyboard__row label.key-k:focus, .keyboard__radio.key-k:checked ~ .keyboard__row label.key-k:hover, .keyboard__radio.key-k:checked ~ .keyboard__row label.key-k:active {
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+.keyboard__radio.key-k:checked ~ .keyboard__row label.key-k:focus {
+  outline: auto;
+}
+.keyboard__radio.key-k:checked ~ .word .word__letter.letter-k {
+  display: block;
+}
+.keyboard__radio.key-k:checked ~ .word .word__spacer.spacer-k {
+  display: none;
+}
+.keyboard__radio--in-word.key-k:checked ~ .keyboard__row label.key-k {
+  background: #2E7D32;
+  color: #fff;
+  cursor: no-drop;
+}
+.keyboard__radio.key-l:checked ~ .keyboard__row label.key-l {
+  background: #B71C1C;
+  color: #fff;
+  cursor: no-drop;
+}
+.keyboard__radio.key-l:checked ~ .keyboard__row label.key-l:focus, .keyboard__radio.key-l:checked ~ .keyboard__row label.key-l:hover, .keyboard__radio.key-l:checked ~ .keyboard__row label.key-l:active {
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+.keyboard__radio.key-l:checked ~ .keyboard__row label.key-l:focus {
+  outline: auto;
+}
+.keyboard__radio.key-l:checked ~ .word .word__letter.letter-l {
+  display: block;
+}
+.keyboard__radio.key-l:checked ~ .word .word__spacer.spacer-l {
+  display: none;
+}
+.keyboard__radio--in-word.key-l:checked ~ .keyboard__row label.key-l {
+  background: #2E7D32;
+  color: #fff;
+  cursor: no-drop;
+}
+.keyboard__radio.key-z:checked ~ .keyboard__row label.key-z {
+  background: #B71C1C;
+  color: #fff;
+  cursor: no-drop;
+}
+.keyboard__radio.key-z:checked ~ .keyboard__row label.key-z:focus, .keyboard__radio.key-z:checked ~ .keyboard__row label.key-z:hover, .keyboard__radio.key-z:checked ~ .keyboard__row label.key-z:active {
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+.keyboard__radio.key-z:checked ~ .keyboard__row label.key-z:focus {
+  outline: auto;
+}
+.keyboard__radio.key-z:checked ~ .word .word__letter.letter-z {
+  display: block;
+}
+.keyboard__radio.key-z:checked ~ .word .word__spacer.spacer-z {
+  display: none;
+}
+.keyboard__radio--in-word.key-z:checked ~ .keyboard__row label.key-z {
+  background: #2E7D32;
+  color: #fff;
+  cursor: no-drop;
+}
+.keyboard__radio.key-x:checked ~ .keyboard__row label.key-x {
+  background: #B71C1C;
+  color: #fff;
+  cursor: no-drop;
+}
+.keyboard__radio.key-x:checked ~ .keyboard__row label.key-x:focus, .keyboard__radio.key-x:checked ~ .keyboard__row label.key-x:hover, .keyboard__radio.key-x:checked ~ .keyboard__row label.key-x:active {
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+.keyboard__radio.key-x:checked ~ .keyboard__row label.key-x:focus {
+  outline: auto;
+}
+.keyboard__radio.key-x:checked ~ .word .word__letter.letter-x {
+  display: block;
+}
+.keyboard__radio.key-x:checked ~ .word .word__spacer.spacer-x {
+  display: none;
+}
+.keyboard__radio--in-word.key-x:checked ~ .keyboard__row label.key-x {
+  background: #2E7D32;
+  color: #fff;
+  cursor: no-drop;
+}
+.keyboard__radio.key-c:checked ~ .keyboard__row label.key-c {
+  background: #B71C1C;
+  color: #fff;
+  cursor: no-drop;
+}
+.keyboard__radio.key-c:checked ~ .keyboard__row label.key-c:focus, .keyboard__radio.key-c:checked ~ .keyboard__row label.key-c:hover, .keyboard__radio.key-c:checked ~ .keyboard__row label.key-c:active {
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+.keyboard__radio.key-c:checked ~ .keyboard__row label.key-c:focus {
+  outline: auto;
+}
+.keyboard__radio.key-c:checked ~ .word .word__letter.letter-c {
+  display: block;
+}
+.keyboard__radio.key-c:checked ~ .word .word__spacer.spacer-c {
+  display: none;
+}
+.keyboard__radio--in-word.key-c:checked ~ .keyboard__row label.key-c {
+  background: #2E7D32;
+  color: #fff;
+  cursor: no-drop;
+}
+.keyboard__radio.key-v:checked ~ .keyboard__row label.key-v {
+  background: #B71C1C;
+  color: #fff;
+  cursor: no-drop;
+}
+.keyboard__radio.key-v:checked ~ .keyboard__row label.key-v:focus, .keyboard__radio.key-v:checked ~ .keyboard__row label.key-v:hover, .keyboard__radio.key-v:checked ~ .keyboard__row label.key-v:active {
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+.keyboard__radio.key-v:checked ~ .keyboard__row label.key-v:focus {
+  outline: auto;
+}
+.keyboard__radio.key-v:checked ~ .word .word__letter.letter-v {
+  display: block;
+}
+.keyboard__radio.key-v:checked ~ .word .word__spacer.spacer-v {
+  display: none;
+}
+.keyboard__radio--in-word.key-v:checked ~ .keyboard__row label.key-v {
+  background: #2E7D32;
+  color: #fff;
+  cursor: no-drop;
+}
+.keyboard__radio.key-b:checked ~ .keyboard__row label.key-b {
+  background: #B71C1C;
+  color: #fff;
+  cursor: no-drop;
+}
+.keyboard__radio.key-b:checked ~ .keyboard__row label.key-b:focus, .keyboard__radio.key-b:checked ~ .keyboard__row label.key-b:hover, .keyboard__radio.key-b:checked ~ .keyboard__row label.key-b:active {
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+.keyboard__radio.key-b:checked ~ .keyboard__row label.key-b:focus {
+  outline: auto;
+}
+.keyboard__radio.key-b:checked ~ .word .word__letter.letter-b {
+  display: block;
+}
+.keyboard__radio.key-b:checked ~ .word .word__spacer.spacer-b {
+  display: none;
+}
+.keyboard__radio--in-word.key-b:checked ~ .keyboard__row label.key-b {
+  background: #2E7D32;
+  color: #fff;
+  cursor: no-drop;
+}
+.keyboard__radio.key-n:checked ~ .keyboard__row label.key-n {
+  background: #B71C1C;
+  color: #fff;
+  cursor: no-drop;
+}
+.keyboard__radio.key-n:checked ~ .keyboard__row label.key-n:focus, .keyboard__radio.key-n:checked ~ .keyboard__row label.key-n:hover, .keyboard__radio.key-n:checked ~ .keyboard__row label.key-n:active {
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+.keyboard__radio.key-n:checked ~ .keyboard__row label.key-n:focus {
+  outline: auto;
+}
+.keyboard__radio.key-n:checked ~ .word .word__letter.letter-n {
+  display: block;
+}
+.keyboard__radio.key-n:checked ~ .word .word__spacer.spacer-n {
+  display: none;
+}
+.keyboard__radio--in-word.key-n:checked ~ .keyboard__row label.key-n {
+  background: #2E7D32;
+  color: #fff;
+  cursor: no-drop;
+}
+.keyboard__radio.key-m:checked ~ .keyboard__row label.key-m {
+  background: #B71C1C;
+  color: #fff;
+  cursor: no-drop;
+}
+.keyboard__radio.key-m:checked ~ .keyboard__row label.key-m:focus, .keyboard__radio.key-m:checked ~ .keyboard__row label.key-m:hover, .keyboard__radio.key-m:checked ~ .keyboard__row label.key-m:active {
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+.keyboard__radio.key-m:checked ~ .keyboard__row label.key-m:focus {
+  outline: auto;
+}
+.keyboard__radio.key-m:checked ~ .word .word__letter.letter-m {
+  display: block;
+}
+.keyboard__radio.key-m:checked ~ .word .word__spacer.spacer-m {
+  display: none;
+}
+.keyboard__radio--in-word.key-m:checked ~ .keyboard__row label.key-m {
+  background: #2E7D32;
+  color: #fff;
+  cursor: no-drop;
+}
+
+.word {
+  display: flex;
+  justify-content: center;
+  font-size: 64px;
+  text-transform: uppercase;
+}
+.word__letter {
+  display: none;
+}
+.word__spacer, .word__letter {
+  padding: 0 6px;
+}
+
+.hangman {
+  max-width: 400px;
+  width: 100%;
+  position: relative;
+  margin: 0 auto;
+}
+.hangman::after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+.hangman__step {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+.hangman__step--1 {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 100%;
+  height: 8px;
+  background: #000;
+  border-radius: 8px 8px 8px 8px;
+}
+.hangman__step--2 {
+  position: absolute;
+  bottom: 0;
+  left: 25%;
+  height: 100%;
+  width: 8px;
+  background: #000;
+  border-radius: 8px 8px 0 0;
+}
+.hangman__step--3 {
+  position: absolute;
+  top: 0;
+  left: 25%;
+  width: 50%;
+  height: 8px;
+  background: #000;
+  border-radius: 8px 8px 8px 0;
+}
+.hangman__step--4 {
+  position: absolute;
+  top: -10px;
+  left: calc(25% + 36px);
+  width: 8px;
+  height: 25%;
+  background: #000;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+.hangman__step--5 {
+  position: absolute;
+  top: 0;
+  left: calc(75% - 8px);
+  width: 8px;
+  height: calc(15% + 8px);
+  background: #000;
+  border-radius: 0 8px 8px 8px;
+}
+.hangman__step--6 {
+  position: absolute;
+  top: 15%;
+  left: calc(75% - 4px);
+  width: 20%;
+  height: 20%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  border: 8px solid #000;
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+.hangman__step--7 {
+  position: absolute;
+  top: 35%;
+  left: calc(75% - 8px);
+  width: 8px;
+  height: 20%;
+  background: #000;
+  border-radius: 0 0 8px 8px;
+}
+.hangman__step--8 {
+  position: absolute;
+  top: 35%;
+  left: calc(75% - 8px);
+  width: 8px;
+  height: 15%;
+  background: #000;
+  -webkit-transform: translateY(-25%) rotate(-45deg);
+          transform: translateY(-25%) rotate(-45deg);
+  -webkit-transform-origin: bottom center;
+          transform-origin: bottom center;
+  border-radius: 8px 8px 0 0;
+}
+.hangman__step--9 {
+  position: absolute;
+  top: 35%;
+  left: calc(75% - 8px);
+  width: 8px;
+  height: 15%;
+  background: #000;
+  -webkit-transform: translateY(-25%) rotate(45deg);
+          transform: translateY(-25%) rotate(45deg);
+  -webkit-transform-origin: bottom center;
+          transform-origin: bottom center;
+  border-radius: 8px 8px 0 0;
+}
+.hangman__step--10 {
+  position: absolute;
+  top: 54%;
+  left: calc(75% - 7px);
+  width: 8px;
+  height: 20%;
+  background: #000;
+  -webkit-transform: rotate(30deg);
+          transform: rotate(30deg);
+  -webkit-transform-origin: top center;
+          transform-origin: top center;
+  border-radius: 0 0 8px 8px;
+}
+.hangman__step--11 {
+  position: absolute;
+  top: 54%;
+  left: calc(75% - 9px);
+  width: 8px;
+  height: 20%;
+  background: #000;
+  -webkit-transform: rotate(-30deg);
+          transform: rotate(-30deg);
+  -webkit-transform-origin: top center;
+          transform-origin: top center;
+  border-radius: 0 0 8px 8px;
+}
+
+.keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .hangman div:nth-child(1) {
+  opacity: 1;
+}
+.keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .hangman div:nth-child(2) {
+  opacity: 1;
+}
+.keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .hangman div:nth-child(3) {
+  opacity: 1;
+}
+.keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .hangman div:nth-child(4) {
+  opacity: 1;
+}
+.keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .hangman div:nth-child(5) {
+  opacity: 1;
+}
+.keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .hangman div:nth-child(6) {
+  opacity: 1;
+}
+.keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .hangman div:nth-child(7) {
+  opacity: 1;
+}
+.keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .hangman div:nth-child(8) {
+  opacity: 1;
+}
+.keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .hangman div:nth-child(9) {
+  opacity: 1;
+}
+.keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .hangman div:nth-child(10) {
+  opacity: 1;
+}
+.keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .hangman div:nth-child(11) {
+  opacity: 1;
+}
+.keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .keyboard__radio:checked:not(.keyboard__radio--in-word) ~ .gameover {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out, visibility 0s 0s;
+}
+
+input[required] ~ input[required]:not(:checked) ~ .win {
+  visibility: hidden;
+  opacity: 0;
+}
+
+input[required]:not(:checked) ~ input[required] ~ .win {
+  visibility: hidden;
+  opacity: 0;
+}
+
+@-webkit-keyframes randomiser {
+  0%, 11.99% {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+  }
+  12%, 23.99% {
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+  }
+  24%, 35.99% {
+    -webkit-transform: translateX(200%);
+            transform: translateX(200%);
+  }
+  36%, 47.99% {
+    -webkit-transform: translateX(300%);
+            transform: translateX(300%);
+  }
+  48%, 59.99% {
+    -webkit-transform: translateX(400%);
+            transform: translateX(400%);
+  }
+  60%, 71.99% {
+    -webkit-transform: translateX(500%);
+            transform: translateX(500%);
+  }
+  72%, 83.99% {
+    -webkit-transform: translateX(600%);
+            transform: translateX(600%);
+  }
+  84%, 95.99% {
+    -webkit-transform: translateX(700%);
+            transform: translateX(700%);
+  }
+  96%, 99.99% {
+    -webkit-transform: translateX(800%);
+            transform: translateX(800%);
+  }
+  100% {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+  }
+}
+
+@keyframes randomiser {
+  0%, 11.99% {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+  }
+  12%, 23.99% {
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+  }
+  24%, 35.99% {
+    -webkit-transform: translateX(200%);
+            transform: translateX(200%);
+  }
+  36%, 47.99% {
+    -webkit-transform: translateX(300%);
+            transform: translateX(300%);
+  }
+  48%, 59.99% {
+    -webkit-transform: translateX(400%);
+            transform: translateX(400%);
+  }
+  60%, 71.99% {
+    -webkit-transform: translateX(500%);
+            transform: translateX(500%);
+  }
+  72%, 83.99% {
+    -webkit-transform: translateX(600%);
+            transform: translateX(600%);
+  }
+  84%, 95.99% {
+    -webkit-transform: translateX(700%);
+            transform: translateX(700%);
+  }
+  96%, 99.99% {
+    -webkit-transform: translateX(800%);
+            transform: translateX(800%);
+  }
+  100% {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+  }
+}
